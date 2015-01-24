@@ -1,0 +1,13 @@
+
+
+<template name="header">
+    <div class="nav">
+        <a href="/">Home</a>
+        {{#if currentUser}}
+            <a href="/admin">Admin</a>
+        {{/if}}
+        <a href="/docs">Docs</a>
+        <a href="/about">About</a>
+        {{> loginButtons}}
+    </div>
+</template>
