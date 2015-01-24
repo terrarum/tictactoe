@@ -1,15 +1,16 @@
 <template name="adminLayout">
-    <div class="header">
-        {{> yield "header"}}
+    {{> yield "header"}}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                {{> yield "admin-sidebar"}}
+            </div>
+            <div class="col-sm-9">
+                {{> yield}}
+            </div>
+        </div>
     </div>
 
-    {{> yield "admin-sidebar"}}
-
-    <div class="content">
-        {{> yield}}
-    </div>
-
-    <div class="footer">
-        {{> yield "footer"}}
-    </div>
+    {{> yield "footer"}}
 </template>
