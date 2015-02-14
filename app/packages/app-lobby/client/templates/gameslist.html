@@ -22,7 +22,23 @@
             {{player2}}
         </td>
         <td>
-            {{#if owner}} <span class="js-delete">Delete</span> {{else}} <span class="js-join">Join!</span> {{/if}}
+            {{#if owner}}
+                {{> gameDelete}}
+            {{else}}
+                {{#if open}}
+                    {{> gameJoin}}
+                {{else}}
+                    In Progress
+                {{/if}}
+            {{/if}}
         </td>
     </tr>
+</template>
+
+<template name="gameDelete">
+    <button class="btn btn-danger js-delete" type="submit">Delete Game</button>
+</template>
+
+<template name="gameJoin">
+    <button class="btn btn-default js-join" type="submit">Join Game</button>
 </template>

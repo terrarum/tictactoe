@@ -26,5 +26,11 @@ Template.gamesList.helpers
         return Games.find()
 
 Template.gameItem.helpers
+    # Returns whether or not the current user is the
+    # owner of the game.
     owner: ->
         return Meteor.userId() == this.ownerId
+    # Returns whether or not the game has a second player.
+    open: ->
+        console.log this.player2?
+        return !this.player2?
