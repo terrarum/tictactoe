@@ -1,5 +1,4 @@
 Games = new Mongo.Collection "games"
-
 Meteor.subscribe 'games'
 
 Template.lobby.events
@@ -13,6 +12,9 @@ Template.gameItem.events
     'click .js-join': ->
         joinGame @
 
+    'click .js-resume': ->
+        Router.go '/game/' + this._id
+
 createGame = ->
     Meteor.call 'addGame'
 
@@ -21,6 +23,7 @@ deleteGame = (game) ->
 
 joinGame = (game) ->
     Meteor.call 'joinGame', game._id
+    Router.go '/game/' + game._id
 
 Template.gamesList.helpers
     gamesList: ->
@@ -39,3 +42,5 @@ Template.gameItem.helpers
         return Meteor.userId() == this.ownerId
     active: ->
         return this.player2?
+
+Template.game.helpers

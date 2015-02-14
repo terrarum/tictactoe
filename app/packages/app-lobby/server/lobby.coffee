@@ -3,7 +3,6 @@ Games = new Mongo.Collection "games"
 Meteor.publish "games", ->
     Games.find()
 
-
 Meteor.methods
 
     # Add a game to the lobby.

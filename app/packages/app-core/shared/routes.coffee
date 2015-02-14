@@ -15,4 +15,7 @@ Router.route '/',
 Router.route '/about'
 
 # Documentation/help section.
-Router.route '/docs'
+Router.route '/game',
+    path: '/game/:_id'
+    data: ->
+        return Games.find _id: @.params.id
