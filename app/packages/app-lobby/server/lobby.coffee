@@ -3,6 +3,7 @@ Games = new Mongo.Collection "games"
 Meteor.publish "games", ->
     Games.find()
 
+
 Meteor.methods
 
     # Add a game to the lobby.
@@ -15,6 +16,7 @@ Meteor.methods
             ownerId: Meteor.userId()
             player1: Meteor.user().username
             player2: null
+            active: false
 
     # Delete a game from the lobby.
     deleteGame: (gameId) ->
@@ -22,4 +24,7 @@ Meteor.methods
 
     # Join a game.
     joinGame: (gameId) ->
-        Games.update gameId, $set: player2: Meteor.user().username
+        Games.update gameId,
+            $set:
+                player2: Meteor.user().username
+                active: true

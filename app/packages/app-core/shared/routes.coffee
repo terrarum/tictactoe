@@ -11,8 +11,8 @@ Router.configure
 Router.route '/',
     template: 'index'
 
-# Documentation/help section.
-Router.route '/docs'
-
 # About page.
 Router.route '/about'
+
+# Documentation/help section.
+Router.route '/docs'

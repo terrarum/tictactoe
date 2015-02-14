@@ -1,6 +1,6 @@
 <template name="gamesList">
 
-    <table>
+    <table class="table">
         <tr>
             <th>Player 1</th>
             <th>Player 2</th>
@@ -22,13 +22,16 @@
             {{player2}}
         </td>
         <td>
+            {{#if active}}
+                {{> gameResume}}
+            {{/if}}
             {{#if owner}}
                 {{> gameDelete}}
             {{else}}
-                {{#if open}}
-                    {{> gameJoin}}
+                {{#if active}}
+
                 {{else}}
-                    In Progress
+                    {{> gameJoin}}
                 {{/if}}
             {{/if}}
         </td>
@@ -41,4 +44,8 @@
 
 <template name="gameJoin">
     <button class="btn btn-default js-join" type="submit">Join Game</button>
+</template>
+
+<template name="gameResume">
+    <button class="btn btn-default js-join" type="submit">Resume</button>
 </template>
