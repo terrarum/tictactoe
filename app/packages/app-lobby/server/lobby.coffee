@@ -12,9 +12,14 @@ Meteor.methods
 
         Games.insert
             createdAt: new Date()
+            ownerId: Meteor.userId()
             player1: Meteor.user().username
             player2: null
 
     # Delete a game from the lobby.
     deleteGame: (gameId) ->
         Games.remove gameId
+
+    # Join a game.
+    joinGame: (gameId) ->
+        Games.update gameId, $set: player2: Meteor.user().username

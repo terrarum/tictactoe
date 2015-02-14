@@ -22,7 +22,7 @@
             {{player2}}
         </td>
         <td>
-            {{#if currentUser}} Delete {{else}} Join! {{/if}}
+            {{#if owner}} <span class="js-delete">Delete</span> {{else}} <span class="js-join">Join!</span> {{/if}}
         </td>
     </tr>
 </template>
