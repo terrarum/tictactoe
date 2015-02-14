@@ -2,7 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                Tic Tac Toe
+                {{#if currentUser}}
+                    {{> lobby}}
+                {{else}}
+                    Welcome! Log in!
+                {{/if}}
             </div>
         </div>
     </div>

@@ -11,18 +11,6 @@ Router.configure
 Router.route '/',
     template: 'index'
 
-# Admin page.
-Router.route '/admin',
-    layoutTemplate: 'adminLayout'
-    template: 'admin'
-    yieldTemplates:
-        header:
-            to: 'header'
-        footer:
-            to: 'footer'
-        'admin-sidebar':
-            to: 'admin-sidebar'
-
 # Documentation/help section.
 Router.route '/docs'
 
