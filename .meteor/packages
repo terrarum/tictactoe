@@ -11,3 +11,6 @@ iron:router
 accounts-ui
 accounts-password
 reywood:bootstrap3-sass
+logging
+mrt:trail
+mrt:trail-monitor

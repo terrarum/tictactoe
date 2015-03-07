@@ -1,0 +1,30 @@
+<template name="game">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {{player1}} vs {{player2}}
+                <br/>
+                It is {{currentPlayer}}'s go.
+            </div>
+            <div class="col-sm-12">
+                {{> renderGrid}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="renderGrid">
+    <div class="grid-container">
+        <div class="grid">
+            {{#each grid}}
+                <div class="grid__row">
+                    {{#each this}}
+                        <div class="grid__row__cell">
+                            {{this.value}}
+                        </div>
+                    {{/each}}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</template>

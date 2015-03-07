@@ -1,0 +1,34 @@
+{
+    "trail": {
+        "transports": [
+            {
+                "type": "console"
+            }
+        ]
+    },
+    "public": {
+        "trail": {
+            "share": true,
+            "monitor": true,
+            "monitor_console": {"show": true, "large": false},
+            "monitors": [
+                {
+                    "name": "Server + Client",
+                    "options": {"limit": 400}
+                },
+                {
+                    "name": "Client only",
+                    "filter": {"client": true}
+                },
+                {
+                    "name": "All clients W+E",
+                    "filter": {"client": true, "other_clients": true, "level": "WARN"}
+                },
+                {
+                    "name": "Server only",
+                    "filter": {"server": true}
+                }
+            ]
+        }
+    }
+}

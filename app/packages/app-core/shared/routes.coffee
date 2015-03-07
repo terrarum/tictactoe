@@ -1,3 +1,7 @@
+Meteor.log.info "routes"
+
+@.Games = new Mongo.Collection "games"
+
 # Default routing options.
 Router.configure
     layoutTemplate: 'mainLayout'
@@ -10,12 +14,17 @@ Router.configure
 # Homepage.
 Router.route '/',
     template: 'index'
+    data: ->
+        Session.set 'currentGame', null
 
 # About page.
 Router.route '/about'
 
-# Documentation/help section.
+# A game.
 Router.route '/game',
     path: '/game/:_id'
     data: ->
-        return Games.find _id: @.params.id
+        # Set current game ID on session.
+        Session.set 'currentGame', @.params._id
+        return Games.findOne
+            _id: @.params._id

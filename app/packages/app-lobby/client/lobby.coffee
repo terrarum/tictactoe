@@ -1,4 +1,5 @@
-Games = new Mongo.Collection "games"
+Meteor.log.info "client/lobby"
+
 Meteor.subscribe 'games'
 
 Template.lobby.events
@@ -25,15 +26,22 @@ joinGame = (game) ->
     Meteor.call 'joinGame', game._id
     Router.go '/game/' + game._id
 
+# Returns all open games.
 Template.gamesList.helpers
     gamesList: ->
         return Games.find
             active: false
 
+# Returns any games that you are a player of that are not open.
 Template.yourGamesList.helpers
     gamesList: ->
         return Games.find
             active: true
+            $or: [
+                    player1: Meteor.user().username
+                ,
+                    player2: Meteor.user().username
+            ]
 
 Template.gameItem.helpers
     # Returns whether or not the current user is the
@@ -42,5 +50,3 @@ Template.gameItem.helpers
         return Meteor.userId() == this.ownerId
     active: ->
         return this.player2?
-
-Template.game.helpers
