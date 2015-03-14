@@ -1,7 +1,5 @@
 Meteor.log.info "client/lobby"
 
-Meteor.subscribe 'games'
-
 Template.lobby.events
     'click .js-new-game': ->
         createGame()

@@ -1,12 +1,15 @@
 Meteor.log.info "game"
 
-gridLine = (line) ->
-    lineHtml = ''
-    for cell in line
-        lineHtml += '<td>' + cell + '</td>'
-    return lineHtml
+Meteor.subscribe 'games'
+
+game = null
 
 Template.renderGrid.helpers
     grid: ->
-        console.log "grid", @.grid
+        game = @
         return @.grid
+
+Template.gridCell.events
+    'click .js-grid-cell': ->
+        @.value = "X"
+        Meteor.call 'updateGrid', game

@@ -19,12 +19,16 @@
             {{#each grid}}
                 <div class="grid__row">
                     {{#each this}}
-                        <div class="grid__row__cell">
-                            {{this.value}}
-                        </div>
+                        {{> gridCell}}
                     {{/each}}
                 </div>
             {{/each}}
         </div>
+    </div>
+</template>
+
+<template name="gridCell">
+    <div class="grid__row__cell js-grid-cell">
+        {{value}}
     </div>
 </template>

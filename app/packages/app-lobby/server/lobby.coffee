@@ -3,7 +3,6 @@ Meteor.log.info "server/lobby"
 Meteor.publish "games", ->
     Games.find()
 
-
 gridModel = ->
     Meteor.log.info "gridModel"
     return {
