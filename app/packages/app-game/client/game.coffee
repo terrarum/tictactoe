@@ -1,4 +1,4 @@
-Meteor.log.info "game"
+#Meteor.log.info "game"
 
 Meteor.subscribe 'games'
 

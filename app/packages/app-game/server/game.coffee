@@ -1,4 +1,4 @@
-Meteor.log.info "server/game"
+#Meteor.log.info "server/game"
 
 Meteor.methods
     updateGrid: (game) ->

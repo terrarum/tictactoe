@@ -1,10 +1,10 @@
-Meteor.log.info "server/lobby"
+#Meteor.log.info "server/lobby"
 
 Meteor.publish "games", ->
     Games.find()
 
 gridModel = ->
-    Meteor.log.info "gridModel"
+    #Meteor.log.info "gridModel"
     return {
         value: ''
         owner: ''
@@ -12,12 +12,12 @@ gridModel = ->
 
 grid = (count) ->
     gridArr = []
-    Meteor.log.info "count", count
+    #Meteor.log.info "count", count
     for i in [0...count] by 1
         row = []
-        Meteor.log.info "i", i
+        #Meteor.log.info "i", i
         for j in [0...count] by 1
-            Meteor.log.info "j", j
+            #Meteor.log.info "j", j
             row.push gridModel()
         gridArr.push row
     return gridArr

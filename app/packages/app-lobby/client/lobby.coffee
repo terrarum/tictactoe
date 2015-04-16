@@ -1,4 +1,4 @@
-Meteor.log.info "client/lobby"
+#Meteor.log.info "client/lobby"
 
 Template.lobby.events
     'click .js-new-game': ->

@@ -1,4 +1,4 @@
-Meteor.log.info "routes"
+#Meteor.log.info "routes"
 
 @.Games = new Mongo.Collection "games"
 
