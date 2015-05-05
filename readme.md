@@ -7,3 +7,8 @@ Multiplayer Tic Tac Toe powered by Meteor.
 Start meteor with local mongo:
 
 ```MONGO_URL="mongodb://localhost:27017/tictactoe" meteor```
+
+# Things I Am Doing Wrong
+
+- Using game IDs in the URL - should create a friendly URL of some kind
+- Game creator always goes first - should randomise

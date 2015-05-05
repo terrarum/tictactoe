@@ -6,6 +6,7 @@ Meteor.publish "games", ->
 gridModel = ->
     #Meteor.log.info "gridModel"
     return {
+        id: uuid.v4()
         value: ''
         owner: ''
     }
@@ -25,7 +26,7 @@ grid = (count) ->
 Meteor.methods
     # Add a game to the lobby.
     addGame: ->
-        if ! Meteor.userId()
+        if !Meteor.userId()
             throw new Meteor.Error("not-authorized")
 
         Games.insert
