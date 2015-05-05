@@ -15,7 +15,11 @@ Template.gameItem.events
         Router.go '/game/' + this._id
 
 createGame = ->
-    Meteor.call 'addGame'
+    Meteor.call 'addGame', (error, gameId) ->
+        if (error)
+            console.log "Something went wrong while creating your game."
+        else
+            Router.go '/game/' + gameId
 
 deleteGame = (game) ->
     Meteor.call 'deleteGame', game._id
