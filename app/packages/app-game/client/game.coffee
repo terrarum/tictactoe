@@ -13,4 +13,5 @@ Template.gridCell.events
     'click .js-grid-cell': ->
         return if game.currentPlayer != Meteor.user().username
         return if @.value != ""
-        Meteor.call 'updateGrid', @.id, game
+        Meteor.call 'updateGrid', @.id, game, (error, result) ->
+            console.log result

@@ -3,10 +3,12 @@
 Meteor.publish "games", ->
     Games.find()
 
-gridModel = ->
+gridModel = (x, y) ->
     #Meteor.log.info "gridModel"
     return {
         id: uuid.v4()
+        x: x
+        y: y
         value: ''
         owner: ''
     }
@@ -19,7 +21,7 @@ grid = (count) ->
         #Meteor.log.info "i", i
         for j in [0...count] by 1
             #Meteor.log.info "j", j
-            row.push gridModel()
+            row.push gridModel i, j
         gridArr.push row
     return gridArr
 
