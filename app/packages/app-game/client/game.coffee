@@ -11,5 +11,6 @@ Template.renderGrid.helpers
 
 Template.gridCell.events
     'click .js-grid-cell': ->
-        @.value = "X"
-        Meteor.call 'updateGrid', game
+        if (game.currentPlayer == Meteor.user().username)
+            @.value = "X"
+            Meteor.call 'updateGrid', game
