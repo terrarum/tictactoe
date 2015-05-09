@@ -29,21 +29,21 @@ Meteor.methods
 
         # Now that the grid has been updated,
         # see if there is a winner.
+        console.log "----- Checking Win State -----"
         won = @.checkWon cell, game.grid
+        console.log "Win State:", won
 
-        console.log "Won?", won 
+        # Update board.
+        Games.update game._id,
+            $set:
+                grid: game.grid
+                currentPlayer: currentPlayer
 
+        # Update players.
         if !won
             # Update current player.
             if (game.currentPlayer == game.player1)
                 currentPlayer = game.player2
             else
                 currentPlayer = game.player1
-
-            Games.update game._id,
-                $set:
-                    grid: game.grid
-                    currentPlayer: currentPlayer
-            return won
-        else
-            return won
+        return won

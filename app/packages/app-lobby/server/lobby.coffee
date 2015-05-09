@@ -21,7 +21,7 @@ grid = (count) ->
         #Meteor.log.info "i", i
         for j in [0...count] by 1
             #Meteor.log.info "j", j
-            row.push gridModel i, j
+            row.push gridModel j, i
         gridArr.push row
     return gridArr
 

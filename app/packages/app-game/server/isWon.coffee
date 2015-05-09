@@ -10,50 +10,50 @@ W = 7
 
 chainLength = 0
 baseDirs = [
-    W,
     NW,
     N,
-    NE
+    NE,
+    E
 ]
 baseCell = null
 
 # Check whether or not the game has been won.
 @.checkWon = (cell, grid) ->
     baseCell = cell
-
-    won = null
+    chainLength = 0
 
     for dir in baseDirs
-        return if isWon()
+        break if isWon()
         # Set chain to 1 because a token has been placed.
         chainLength = 1
-        won = checkDirection baseCell, grid, dir
-        if !won
+        checkDirection baseCell, grid, dir
+
+        if !isWon()
             # Check the opposite direction.
-            won = checkDirection baseCell, grid, getOppositeDirection(dir)
-    console.log "won:", won
-    return won
+            checkDirection baseCell, grid, getOppositeDirection(dir)
+
+    console.log "-- result --", isWon()
+    return isWon()
 
 # Has the game been won yet?
 isWon = ->
-    return chainLength == WIN_LENGTH;
+    return chainLength is WIN_LENGTH
 
+# Check cells in given direction.
 checkDirection = (cell, grid, dir) ->
     # Get a cell in a direction.
     nextCell = getCellInDir(grid, cell, dir)
-
     # If the new cell is valid and has the same value as the baseCell.
     if isCellValid(nextCell, baseCell.value)
 
         # Increase chain length.
         chainLength++
-        console.log "Chain Length", chainLength, isWon()
-        if isWon()
-            return true
-        else
+        console.log "Chain Length:", chainLength
+
+        if !isWon()
             # Check the next cell.
             checkDirection nextCell, grid, dir
-    return false
+    console.log "not valid"
 
 # Returns the opposite direction to the one given.
 getOppositeDirection = (dir) ->
@@ -113,8 +113,10 @@ getCellByPos = (grid, x, y) ->
 # Is the cell valid?
 isCellValid = (cell, value) ->
     if cell == undefined
+#        console.log "== Cell is undefined"
         false
     else if cell.value != value
+#        console.log "== Cells do not match"
         false
     else
         true
