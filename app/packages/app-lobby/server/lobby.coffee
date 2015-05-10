@@ -40,6 +40,11 @@ Meteor.methods
             currentPlayer: Meteor.user().username
             grid: grid(gridSize)
             cellCount: gridSize * gridSize
+            status:
+                tie: false
+                playing: false
+                won: false
+                seeking: true
 
     # Delete a game from the lobby.
     deleteGame: (gameId) ->

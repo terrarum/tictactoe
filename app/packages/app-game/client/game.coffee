@@ -2,27 +2,30 @@
 
 Meteor.subscribe 'games'
 
-game = null
-
 Template.game.helpers
     currentPlayerString: ->
-
-        if @.grid is undefined
-            Router.go '/'
-
         if Meteor.user().username is @.currentPlayer
             return "your"
         else
             return @.currentPlayer + "'s"
 
+# Don't delete this.
+game = null
+
 Template.renderGrid.helpers
     grid: ->
         game = @
-        return @.grid
+        if game.grid is undefined
+            Router.go "/"
+        return game.grid
 
 Template.gridCell.events
     'click .js-grid-cell': ->
         return if game.currentPlayer != Meteor.user().username
         return if @.value != ""
-        Meteor.call 'updateGrid', @.id, game, (error, result) ->
-            console.log result
+        Meteor.call 'updateGrid', @.id, game
+
+Template.game.events
+    'click .js-delete': ->
+        Meteor.call "deleteGame", game._id
+        Router.go "/"

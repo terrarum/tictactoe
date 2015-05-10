@@ -4,7 +4,19 @@
             <div class="col-sm-12">
                 {{player1}} vs {{player2}}
                 <br/>
-                It is {{currentPlayerString}} go.
+                {{#if status.playing}}
+                    It is {{currentPlayerString}} go.
+                {{/if}}
+                {{#if status.tie}}
+                    It's a tie!
+                    <br/>
+                    <button class="btn btn-default js-delete" type="submit">Return to Lobby</button>
+                {{/if}}
+                {{#if status.won}}
+                    {{currentPlayer}} has won the game!
+                    <br/>
+                    <button class="btn btn-default js-delete" type="submit">Return to Lobby</button>
+                {{/if}}
             </div>
             <div class="col-sm-12">
                 {{> renderGrid}}

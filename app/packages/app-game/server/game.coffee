@@ -8,6 +8,7 @@ getCellById = (cellId, grid) ->
 Meteor.methods
     updateGrid: (cellId, game) =>
         return if game.currentPlayer != Meteor.user().username
+        return if game.status.playing is false
         cell = getCellById cellId, game.grid
         return if cell.value != ""
 
@@ -32,7 +33,10 @@ Meteor.methods
             Games.update game._id,
                 $set:
                     grid: game.grid
-            return "tie"
+                    status:
+                        tie: true
+                        playing: false
+                        won: false
 
         # If game continues.
         else if !won and cellCount - 1 > 0
@@ -49,11 +53,12 @@ Meteor.methods
                     currentPlayer: currentPlayer
                     cellCount: cellCount - 1
 
-            return "continue"
-
         # If game has been won.
         else
             Games.update game._id,
                 $set:
                     grid: game.grid
-            return currentPlayer + " wins"
+                    status:
+                        tie: false
+                        playing: false
+                        won: true

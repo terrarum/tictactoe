@@ -33,12 +33,14 @@ Template.gamesList.helpers
     gamesList: ->
         return Games.find
             active: false
+            player2: null
+            player1:
+                $not: Meteor.user().username
 
 # Returns any games that you are a player of that are not open.
 Template.yourGamesList.helpers
     gamesList: ->
         return Games.find
-            active: true
             $or: [
                     player1: Meteor.user().username
                 ,
@@ -49,6 +51,6 @@ Template.gameItem.helpers
     # Returns whether or not the current user is the
     # owner of the game.
     owner: ->
-        return Meteor.userId() == this.ownerId
+        return Meteor.userId() == @.ownerId
     active: ->
-        return this.player2?
+        return @.active
