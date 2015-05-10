@@ -4,6 +4,13 @@ Meteor.subscribe 'games'
 
 game = null
 
+Template.game.helpers
+    currentPlayerString: ->
+        if Meteor.user().username is @.currentPlayer
+            return "your"
+        else
+            return @.currentPlayer + "'s"
+
 Template.renderGrid.helpers
     grid: ->
         game = @

@@ -1,12 +1,12 @@
 WIN_LENGTH = 3
 NW = 0
-N = 1
+N  = 1
 NE = 2
-E = 3
+E  = 3
 SE = 4
-S = 5
+S  = 5
 SW = 6
-W = 7
+W  = 7
 
 chainLength = 0
 baseDirs = [
@@ -32,7 +32,6 @@ baseCell = null
             # Check the opposite direction.
             checkDirection baseCell, grid, getOppositeDirection(dir)
 
-    console.log "-- result --", isWon()
     return isWon()
 
 # Has the game been won yet?
@@ -48,12 +47,10 @@ checkDirection = (cell, grid, dir) ->
 
         # Increase chain length.
         chainLength++
-        console.log "Chain Length:", chainLength
 
         if !isWon()
             # Check the next cell.
             checkDirection nextCell, grid, dir
-    console.log "not valid"
 
 # Returns the opposite direction to the one given.
 getOppositeDirection = (dir) ->
@@ -113,10 +110,8 @@ getCellByPos = (grid, x, y) ->
 # Is the cell valid?
 isCellValid = (cell, value) ->
     if cell == undefined
-#        console.log "== Cell is undefined"
         false
     else if cell.value != value
-#        console.log "== Cells do not match"
         false
     else
         true

@@ -13,6 +13,7 @@ gridModel = (x, y) ->
         owner: ''
     }
 
+# Creates a two-dimensional array of the given size.
 grid = (count) ->
     gridArr = []
     #Meteor.log.info "count", count
@@ -31,6 +32,8 @@ Meteor.methods
         if !Meteor.userId()
             throw new Meteor.Error("not-authorized")
 
+        gridSize = 3
+
         Games.insert
             createdAt: new Date()
             ownerId: Meteor.userId()
@@ -38,7 +41,8 @@ Meteor.methods
             player2: null
             active: false
             currentPlayer: Meteor.user().username
-            grid: grid(3)
+            grid: grid(gridSize)
+            cellCount: gridSize * gridSize
 
     # Delete a game from the lobby.
     deleteGame: (gameId) ->

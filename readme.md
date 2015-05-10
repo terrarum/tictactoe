@@ -14,3 +14,7 @@ Start meteor with local mongo:
 - Game creator always goes first - should randomise.
 - Cells need to know their X and Y position. Instead of this, there should be a 'get pos of cell with given id' function that returns an x/y object for reference to complement the 'get cell by pos' function.
 - Really need tests for all of the grid functions.
+
+# Things I Could Do Better
+
+- Store directions in pairs to get rid of that nasty getOppositeDirection switch?
