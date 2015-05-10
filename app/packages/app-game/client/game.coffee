@@ -6,6 +6,10 @@ game = null
 
 Template.game.helpers
     currentPlayerString: ->
+
+        if @.grid is undefined
+            Router.go '/'
+
         if Meteor.user().username is @.currentPlayer
             return "your"
         else

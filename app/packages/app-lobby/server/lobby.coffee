@@ -16,12 +16,9 @@ gridModel = (x, y) ->
 # Creates a two-dimensional array of the given size.
 grid = (count) ->
     gridArr = []
-    #Meteor.log.info "count", count
     for i in [0...count] by 1
         row = []
-        #Meteor.log.info "i", i
         for j in [0...count] by 1
-            #Meteor.log.info "j", j
             row.push gridModel j, i
         gridArr.push row
     return gridArr
