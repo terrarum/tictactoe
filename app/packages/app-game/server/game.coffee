@@ -7,7 +7,8 @@ getCellById = (cellId, grid) ->
 
 Meteor.methods
     updateGrid: (cellId, game) =>
-        return if game.currentPlayer != Meteor.user().username
+        return if game.currentPlayer isnt Meteor.user().username
+        return if game.player2 is null
         return if game.status.playing is false
         cell = getCellById cellId, game.grid
         return if cell.value != ""

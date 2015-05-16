@@ -42,9 +42,8 @@ Meteor.methods
             cellCount: gridSize * gridSize
             status:
                 tie: false
-                playing: false
+                playing: true
                 won: false
-                seeking: true
 
     # Delete a game from the lobby.
     deleteGame: (gameId) ->

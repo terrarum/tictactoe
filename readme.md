@@ -15,6 +15,7 @@ Start meteor with local mongo:
 - Cells need to know their X and Y position. Instead of this, there should be a 'get pos of cell with given id' function that returns an x/y object for reference to complement the 'get cell by pos' function.
 - Really need tests for all of the grid functions.
 - Using player names rather than player IDs to identify players in a game.
+- Games should reference player objects rather than null or a string
 
 # Things I Could Do Better
 
