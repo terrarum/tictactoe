@@ -2,7 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                {{player1}} vs {{player2}}
+                {{#unless status.waiting}}
+                    {{player1}} vs {{player2}}
+                {{/unless}}
+
                 <br/>
                 {{#if status.playing}}
                     It is {{currentPlayerString}} go.
@@ -19,7 +22,11 @@
                 {{/if}}
             </div>
             <div class="col-sm-12">
-                {{> renderGrid}}
+                {{#if status.waiting}}
+                    Waiting for opponent to join!
+                {{else}}
+                    {{> renderGrid}}
+                {{/if}}
             </div>
         </div>
     </div>
