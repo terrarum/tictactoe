@@ -32,7 +32,7 @@ joinGame = (game) ->
 Template.gamesList.helpers
     gamesList: ->
         return Games.find
-            active: false
+            "status.waiting": true
             player2: null
             player1:
                 $not: Meteor.user().username
@@ -52,5 +52,11 @@ Template.gameItem.helpers
     # owner of the game.
     owner: ->
         return Meteor.userId() == @.ownerId
-    active: ->
-        return @.active
+    memberOf: ->
+        username = Meteor.user().username
+        if @.player1 is username or @.player2 is username
+            console.log "member of"
+            return true
+        else
+            console.log "not member of"
+            return false

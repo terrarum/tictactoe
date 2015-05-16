@@ -22,3 +22,7 @@ Start meteor with local mongo:
 - Store directions in pairs to get rid of that nasty getOppositeDirection switch?
 - Some things are reacting to the results of a DB change (e.g. returning player to lobby if game is deleted) immediately, without time to present a message to the player.
 - Game status needs to be stored as a boolean but this creates a nasty state object. Need helper methods for setting and getting the game state.
+
+# Features to Add
+
+- Games could be spectated

@@ -36,13 +36,13 @@ Meteor.methods
             ownerId: Meteor.userId()
             player1: Meteor.user().username
             player2: null
-            active: false
             currentPlayer: Meteor.user().username
             grid: grid(gridSize)
             cellCount: gridSize * gridSize
             status:
                 tie: false
-                playing: true
+                waiting: true
+                playing: false
                 won: false
 
     # Delete a game from the lobby.
@@ -54,4 +54,8 @@ Meteor.methods
         Games.update gameId,
             $set:
                 player2: Meteor.user().username
-                active: true
+                status:
+                    tie: false
+                    waiting: false
+                    playing: true
+                    won: false
